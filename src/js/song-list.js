@@ -3,9 +3,7 @@
     el: '#songList-container',
     template: `
       <ul class="songList">
-        <div class="liWrap">
-          <li>歌曲1</li>   
-        </div>   
+ 
       </ul>
     `,
     render(data){
@@ -32,24 +30,38 @@
       songs: [
         // 歌曲列表数组
       ]
-    }
+    },
+    find(){
+      let query = new AV.Query('Song')
+      return query.find().then((songs)=>{
+        this.data.songs = songs.map((song)=>{
+          return {
+            id: song.id,
+            name:song.attributes.name,
+            url:song.attributes.url,
+            singer:song.attributes.singer,
+          }
+        })
+        return songs
+      })
+    },
   }
   let controller = {
     init(view, model){
       this.view = view
       this.model = model
+      this.model.find().then((songs)=>{
+        console.log(this.model.data.songs)
+        this.view.render(this.model.data  )
+      })
       this.view.render(this.model.data)
       window.eventHub.on('upload',()=>{
         this.view.clearActive()
       })
       window.eventHub.on('create',(data)=>{
-        console.log(11)
-        console.log(data)
         this.model.data.songs.push(data)
-        console.log(22)
-        console.log(this.model.data.songs)
         this.view.render(this.model.data)
-      })
+      })      
     }
   }
 
