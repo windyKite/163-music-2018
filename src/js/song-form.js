@@ -5,7 +5,6 @@
       this.$el = $(this.el)
     },
     template: `
-      <h1>新建歌曲</h1>
       <form class="form">
         <div class="row">
           <label>歌名</label>
@@ -31,6 +30,11 @@
         html = html.replace(`__${string}__`, data[string] || '')
       })
       $(this.el).html(html)
+      if(data.id){
+        $(this.el).prepend('<h1>编辑歌曲</h1>')
+      }else{
+        $(this.el).prepend('<h1>新建歌曲</h1>')
+      }
     },
     reset(){
       this.render()
@@ -74,6 +78,14 @@
       window.eventHub.on('upload', (data)=>{
         this.view.render(data)
       })
+      window.eventHub.on('select',(data)=>{
+        this.model.data = data
+        this.view.render(data)
+      })
+      window.eventHub.on('new',()=>{
+        this.model.data = {}
+        this.view.render()
+      })
     },
     bindEvents(){
       this.view.$el.on('submit','form',(e)=>{
@@ -85,18 +97,10 @@
         })
         this.model.create(data)
           .then(()=>{
-            console.log('song-form 给的数据')
-            console.log(this.model.data)
             this.view.reset()
             let object = JSON.parse(JSON.stringify(this.model.data))
             window.eventHub.emit('create',object)
           })
-        
-        // console.log('objectaaa')
-        // console.log(object)
-        // console.log('caicaicia')
-        // console.log(this.model.data)
-        
       })
     }
   }

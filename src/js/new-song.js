@@ -6,6 +6,12 @@
     `,
     render(data){
       $(this.el).html(this.template)
+    },
+    active(){
+      $(this.el).addClass('active')
+    },
+    deactive(){
+      $(this.el).removeClass('active') 
     }
   }
 
@@ -15,21 +21,19 @@
       this.view = view
       this.model = model
       this.view.render(this.model.data)
-      this.active()
+      this.view.active()
       window.eventHub.on('upload',(data)=>{
-        this.active()
+        this.view.active()
       })
       window.eventHub.on('select',(data)=>{
-        console.log(data.id)
-        this.deactive()
+        this.view.deactive()
+      })
+      $(this.view.el).on('click',(e)=>{
+        this.view.active()
+        window.eventHub.emit('new')
       })
     },
-    active(){
-      $(this.view.el).addClass('active')
-    },
-    deactive(){
-      $(this.view.el).removeClass('active') 
-    }
+    
   }
 
   controller.init(view, model)

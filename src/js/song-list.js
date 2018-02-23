@@ -55,7 +55,7 @@
       this.model = model
       this.view.render(this.model.data)
       this.bindEvents()
-      this.bindventHub()  
+      this.bindEventHub()  
       this.getAllSongs()       
     },
     getAllSongs(){
@@ -67,10 +67,15 @@
       $(this.view.el).on('click','li',(e)=>{
         this.view.activeItem(e.currentTarget)
         songID = e.currentTarget.getAttribute('data-song-id')
-        window.eventHub.emit('select',{id: songID})
+        let data = this.model.data.songs.filter((song)=>{
+          return song.id === songID          
+        })[0]
+        
+        data = JSON.parse(JSON.stringify(data))
+        window.eventHub.emit('select', data)
       })
     },
-    bindventHub(){
+    bindEventHub(){
       window.eventHub.on('upload',()=>{
         this.view.clearActive()
       })
@@ -78,6 +83,9 @@
         this.model.data.songs.push(data)
         this.view.render(this.model.data)
       })   
+      window.eventHub.on('new',()=>{
+        this.view.clearActive()        
+      })
     }
   }
 
