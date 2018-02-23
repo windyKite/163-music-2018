@@ -10,15 +10,18 @@
       $(this.el).html(this.template)
       let {songs} = data
       let divList = songs.map((song)=>{
-        console.log('哈哈')
-        console.log($(`<div class="liWrap"><li>${song.name}</li></div>`))
-        return $(`<div class="liWrap"><li>${song.name}</li></div>`)
+        return $(`<div class="liWrap"><li data-song-id="${song.id}">${song.name}</li></div>`)
       })
       $(this.el).find('ul').empty()
       divList.map((domDiv)=>{
         $(this.el).find('ul').append(domDiv)
       })
 
+    },
+    activeItem(li){
+      let $liWrap = $(li.parentNode)
+      $liWrap.addClass('active')
+        .siblings('.active').removeClass('active')
     },
     clearActive(){
       $(this.el).find('.active').removeClass('active')
@@ -50,18 +53,31 @@
     init(view, model){
       this.view = view
       this.model = model
-      this.model.find().then((songs)=>{
-        console.log(this.model.data.songs)
-        this.view.render(this.model.data  )
-      })
       this.view.render(this.model.data)
+      this.bindEvents()
+      this.bindventHub()  
+      this.getAllSongs()       
+    },
+    getAllSongs(){
+      return this.model.find().then((songs)=>{
+        this.view.render(this.model.data)
+      }) 
+    },
+    bindEvents(){
+      $(this.view.el).on('click','li',(e)=>{
+        this.view.activeItem(e.currentTarget)
+        songID = e.currentTarget.getAttribute('data-song-id')
+        window.eventHub.emit('select',{id: songID})
+      })
+    },
+    bindventHub(){
       window.eventHub.on('upload',()=>{
         this.view.clearActive()
       })
       window.eventHub.on('create',(data)=>{
         this.model.data.songs.push(data)
         this.view.render(this.model.data)
-      })      
+      })   
     }
   }
 
