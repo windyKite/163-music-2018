@@ -8,9 +8,13 @@
     `,
     render(data){
       $(this.el).html(this.template)
-      let {songs} = data
+      let {songs, selectSongId} = data
       let divList = songs.map((song)=>{
-        return $(`<div class="liWrap"><li data-song-id="${song.id}">${song.name}</li></div>`)
+        let $liWrap =  $(`<div class="liWrap"><li data-song-id="${song.id}">${song.name}</li></div>`)
+        if(song.id === selectSongId){
+          $liWrap.addClass('active')
+        }
+        return $liWrap
       })
       $(this.el).find('ul').empty()
       divList.map((domDiv)=>{
@@ -18,11 +22,11 @@
       })
 
     },
-    activeItem(li){
-      let $liWrap = $(li.parentNode)
-      $liWrap.addClass('active')
-        .siblings('.active').removeClass('active')
-    },
+    // activeItem(li){
+    //   let $liWrap = $(li.parentNode)
+    //   $liWrap.addClass('active')
+    //     .siblings('.active').removeClass('active')
+    // },
     clearActive(){
       $(this.el).find('.active').removeClass('active')
     }
@@ -32,7 +36,8 @@
     data: {
       songs: [
         // 歌曲列表数组
-      ]
+      ],
+      selectSongId: ''
     },
     find(){
       let query = new AV.Query('Song')
@@ -65,8 +70,10 @@
     },
     bindEvents(){
       $(this.view.el).on('click','li',(e)=>{
-        this.view.activeItem(e.currentTarget)
         songID = e.currentTarget.getAttribute('data-song-id')
+        this.model.data.selectSongId = songID
+        this.view.render(this.model.data)
+
         let data = this.model.data.songs.filter((song)=>{
           return song.id === songID          
         })[0]
@@ -85,6 +92,15 @@
       })   
       window.eventHub.on('new',()=>{
         this.view.clearActive()        
+      })
+      window.eventHub.on('update',(song)=>{
+        let songs = this.model.data.songs
+        for(let i = 0; i < songs.length;i++){
+          if(songs[i].id === song.id){
+            Object.assign(songs[i], song)
+          }
+        }
+        this.view.render(this.model.data)
       })
     }
   }
