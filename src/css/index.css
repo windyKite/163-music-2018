@@ -1,0 +1,128 @@
+/* header */
+header{background: #d43c33;}
+header{padding: 5.3125vw 3.2vw;display: flex;align-items: center;justify-content: space-between;}
+header > .logo{width: 44.375vw;}
+header > a{color: #fff;font-size: 4.6875vw;position: relative;padding: 0.94vw 3.125vw;
+  border: 1px solid rgba(255,255,255,.4);border-radius: 37.5%/100%;}
+
+/* nav */
+nav{
+}
+nav > ol{
+  font-size: 4.375vw;
+  font-family: Helvetica, sans-serif;
+  display: flex;
+  border-bottom: 1px solid rgba(0,0,0,.1)
+} 
+nav > ol > li{
+  flex: 1;
+  text-align: center;
+  padding: 3.125vw 0;
+} 
+nav > ol > li > span{
+  padding: 0 1.875vw;
+  position: relative;
+}
+nav > ol > li > span.active{
+  color: #d43c33;
+}
+nav > ol > li > span.active::after{
+  content: '';
+  width: 100%;
+  position: absolute;
+  bottom: -3.75vw;
+  left: 0;
+  border: 1px solid #d43c33;
+}
+
+/* recommendedSongList */
+.tabContent > li > section > h2{
+  font-size: 5.3125vw;
+  line-height: 5.3125vw;
+  margin: 6.5625vw 0 5vw;
+  padding-left: 2vw; 
+  border-left: 2px solid #d43c33;
+}
+.recommendedSongList > ul{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.recommendedSongList > ul > li{
+  width: calc(33.33% - 0.55vw);
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5.025vw;
+}
+.recommendedSongList > ul > li > img{
+  width: 100%;
+}
+.recommendedSongList > ul > li > p{
+  font-size: 4.0625vw;
+  line-height: 5vw;
+  padding: 1.875vw 0.625vw 0 1.875vw;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+/* latestMusic */
+.latestMusic > ol{}
+.latestMusic > ol > li{
+  padding:1.8vw 0;
+  border-bottom: 1px solid rgba(0,0,0,.1);
+  margin-left: 3.125vw;
+}
+.latestMusic > ol > li > a{
+  position: relative;
+}
+.latestMusic > ol > li > a > h3{
+  font-size: 5.3125vw;
+  max-width: 83.75vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.latestMusic > ol > li > a > p{
+  font-size: 3.75vw;
+  color: #888;
+  max-width: 83.75vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.latestMusic > ol > li > a > svg.icon{
+  position: absolute;
+  width: 8.125vw;
+  height: 8.125vw;
+  right: -94.125vw;
+  top: -10.525vw;
+}
+/* footer */
+.footer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 5vw;
+  background: #faf8f8;
+}
+.footer > svg{
+  width: 71.8755vw;
+  padding-top: 12%;
+}
+.footer > a.openApp{
+  font-size: 5vw;
+  line-height: 11.875vw;
+  border: 1px solid #d33a31; 
+  padding-left: 6.25VW;
+  padding-right: 6.25vw;
+  border-radius: 18%/100%;
+  color: #d33a31;
+  margin: 5vw 0 2vw;
+}
+.footer > p.copyright{
+  font-size: 3.75vw;
+  line-height: 3.75vw;
+  color: #888;
+  transform: scale(0.75)
+}

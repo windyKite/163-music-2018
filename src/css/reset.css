@@ -1,0 +1,7 @@
+*{margin: 0;padding: 0;box-sizing: border-box;color: rgba(0, 0, 0, .9)}
+*::after,*::before{box-sizing: border-box}
+ul,ol{list-style: none}
+h1,h2,h3,h4,h5,h6{font-weight: normal}
+a{text-decoration: none}
+
+.icon {width: 1em; height: 1em;vertical-align: -0.15em;fill: rgba(0, 0, 0, .3);overflow: hidden;}
