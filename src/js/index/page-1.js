@@ -1,4 +1,6 @@
 {
+  
+
   let view = {
     el: '#page-1',
     init(){
@@ -20,6 +22,8 @@
       this.view.init()
       this.model = model
       this.bindEventHub()
+      this.loadModule1()
+      this.loadModule2()
     },
     bindEventHub(){
       window.eventHub.on('selectTab',(tabName)=>{
@@ -29,6 +33,22 @@
           this.view.hide()
         }
       })
+    },
+    loadModule1(){
+      let script = document.createElement('script')
+      script.src = './js/index/page-1-1.js'
+      script.onload = function(){
+        console.log('模块加载完毕')
+      }
+      document.body.appendChild(script)  
+    },
+    loadModule2(){
+      let script = document.createElement('script')
+      script.src = './js/index/page-1-2.js'
+      script.onload = function(){
+        console.log('模块加载完毕')
+      }
+      document.body.appendChild(script)  
     },
   }
 
