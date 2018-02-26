@@ -14,22 +14,22 @@
     <a href="#">下载APP</a>
   </header>
 
-  <nav>
+  <nav id="tabs">
     <ol>
-      <li>
-        <span class="active">推荐音乐</span>
+      <li class="active" data-tab-name="page-1">
+        <span>推荐音乐</span>
       </li>
-      <li>
+      <li data-tab-name="page-2">
         <span>热歌榜</span>
       </li>
-      <li>
+      <li data-tab-name="page-3">
         <span>搜索</span>
       </li>
     </ol>
   </nav>
 
   <ol class="tabContent">
-    <li>
+    <li id="page-1" class="page-1 active">
       <section class="recommendedSongList">
         <h2>推荐歌单</h2>
         <ul>
@@ -126,9 +126,21 @@
         </p>
       </section>
     </li>
-    <li></li>
-    <li></li>
+    <li id="page-2" class="page-2">
+      <p>fasdddddddddd</p>
+    </li>
+    <li id="page-3" class="page-3">
+      <p>sdaffffff</p>
+    </li>
   </ol>
   <script src="//at.alicdn.com/t/font_573625_ddxmngnuytz6ko6r.js"></script>
+  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="../node_modules/leancloud-storage/dist/av-min.js"></script>
+  <script src="./js/initializers/av.js"></script>
+  <script src="./js/admin/event-hub.js"></script>
+  <script src="./js/index/tabs.js"></script>  
+  <script src="./js/index/page-1.js"></script>  
+  <script src="./js/index/page-2.js"></script>  
+  <script src="./js/index/page-3.js"></script>  
 </body>
 </html>

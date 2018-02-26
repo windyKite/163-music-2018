@@ -23,10 +23,10 @@ nav > ol > li > span{
   padding: 0 1.875vw;
   position: relative;
 }
-nav > ol > li > span.active{
+nav > ol > li.active > span{
   color: #d43c33;
 }
-nav > ol > li > span.active::after{
+nav > ol > li.active > span::after{
   content: '';
   width: 100%;
   position: absolute;
@@ -34,7 +34,13 @@ nav > ol > li > span.active::after{
   left: 0;
   border: 1px solid #d43c33;
 }
-
+/* tabContent */
+.tabContent > li{
+  display: none;
+}
+.tabContent > li.active{
+  display: block;
+}
 /* recommendedSongList */
 .tabContent > li > section > h2{
   font-size: 5.3125vw;
