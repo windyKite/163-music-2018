@@ -5,15 +5,14 @@
       this.$el = $(this.el)
     },
     render(data){
-      console.log(data)
       let songs = data.songs
-      console.log(songs)
       songs.map((song)=>{
+        let {id,name,singer,url} = song
         let $li = `
         <li>
-        <a href="">
-          <h3>${song.name}</h3>
-          <p>${song.singer}</p>
+        <a href="./song.html?id=${id}">
+          <h3>${name}</h3>
+          <p>${singer}</p>
           <svg class="icon" aria-hidden="true">
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-bofang"></use>
           </svg>
@@ -47,7 +46,7 @@
   }
   
   let controller = {
-    init(){
+    init(view, model){
       this.view = view 
       this.view.init()
       this.model = model
