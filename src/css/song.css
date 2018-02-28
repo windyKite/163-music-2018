@@ -1,22 +1,21 @@
+#page{
+  background-color: rgba(0,0,0,.5);
+  height: 100vh;
+}
 .background{
-  /* width: 100vw;
-  height: 100vh;   */
   background-size: cover;
   background-position: center;
-  background-image: url(../../images/song/background);
   background-repeat: no-repeat;
-}
-.background::before{
-  content: '';
   position: absolute;
   width: 100%;
   height: 100%;
   filter: blur(10px);
+  z-index: -1;
 }
 main{
   width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, .5);
+  height: 86vh;
+  /* background: rgba(0, 0, 0, .5); */
 }
 
 .logo{
@@ -62,8 +61,11 @@ main{
   /* top: 36vw; */
   animation: circle 20s infinite linear; 
 }
-
+.cover.paused{
+  animation-play-state: paused;
+}
 svg.icon {
+  display: none;
   width: 20vw;
   height: 20vw;
   fill: rgba(255,255,255,0.8);
