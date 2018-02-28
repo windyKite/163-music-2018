@@ -45,9 +45,10 @@
         this.data.songs = songs.map((song)=>{
           return {
             id: song.id,
-            name:song.attributes.name,
-            url:song.attributes.url,
-            singer:song.attributes.singer,
+            name: song.attributes.name,
+            url: song.attributes.url,
+            singer: song.attributes.singer,
+            cover: song.attributes.cover
           }
         })
         return songs
