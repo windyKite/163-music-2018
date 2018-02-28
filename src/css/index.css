@@ -1,12 +1,14 @@
-/* header */
-header{background: #d43c33;}
+*{color: rgba(0, 0, 0, .9)}/* header */
+header{background: #d43c33;position: fixed;width: 100vw;z-index: 1;}
 header{padding: 5.3125vw 3.2vw;display: flex;align-items: center;justify-content: space-between;}
 header > .logo{width: 44.375vw;}
 header > a{color: #fff;font-size: 4.6875vw;position: relative;padding: 0.94vw 3.125vw;
   border: 1px solid rgba(255,255,255,.4);border-radius: 37.5%/100%;}
 
+
 /* nav */
 nav{
+  padding-top: 20vw ;
 }
 nav > ol{
   font-size: 4.375vw;
