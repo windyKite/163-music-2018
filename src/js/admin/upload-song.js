@@ -33,7 +33,7 @@
         get_new_uptoken: false,  //设置上传文件的时候是否每次都重新获取新的token
         max_file_size: '40mb',           //最大文件体积限制
         dragdrop: true,                   //开启可拖曳上传
-        drop_element: 'uploadContainer',        //拖曳上传区域元素的ID，拖曳文件或文件夹后可触发上传
+        drop_element: ['uploadContainer','xx'],        //拖曳上传区域元素的ID，拖曳文件或文件夹后可触发上传
         auto_start: true,                 //选择文件后自动上传，若关闭需要自己绑定事件触发上传
         init: {
           'FilesAdded': function (up, files) {
@@ -64,6 +64,18 @@
               url: sourceLink,
               name: response.key
             })
+
+            console.log('up')
+            console.log(up)
+            console.log('info')
+            console.log(info)
+            console.log('file')
+            console.log(file)
+            console.log('response')
+            console.log(response)
+            
+            console.log(11111111111111)
+            console.log('sourceLink')
             console.log(sourceLink)
             // uploadStatus.textContent = `${sourceLink}` + ' ' + response.key
           },

@@ -73,23 +73,37 @@ svg.icon {
   position: absolute;
 }
 
+.description{
+  margin-top: 8.125vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.description > h1{
+  font-size: 4.6875vw;
+  color: #fff;
+  padding-bottom: 2.3vw;  
+}
 .lyrics{
-  height: 31.875vw;
+  width: 100%;
   color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 8.125vw;
+  overflow: hidden;
 }
-.lyrics > h1{
-  font-size: 4.6875vw;
-  color: #fff;
-  padding-bottom: 2.3vw;  
+.lyrics > .lines{
+  text-align: center;
+  height: 31.875vw;  
+  transition: all 0.3s;
 }
-.lyrics > p{
+.lyrics > .lines > p{
   font-size: 5vw;
   color: rgba(255,255,255,0.6);
+}
+.lyrics > .lines > p.active{
+  color: #fff;
 }
 /* footer */
 footer{

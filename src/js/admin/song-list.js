@@ -20,13 +20,7 @@
       divList.map((domDiv)=>{
         $(this.el).find('ul').append(domDiv)
       })
-
     },
-    // activeItem(li){
-    //   let $liWrap = $(li.parentNode)
-    //   $liWrap.addClass('active')
-    //     .siblings('.active').removeClass('active')
-    // },
     clearActive(){
       $(this.el).find('.active').removeClass('active')
     }
@@ -48,7 +42,8 @@
             name: song.attributes.name,
             url: song.attributes.url,
             singer: song.attributes.singer,
-            cover: song.attributes.cover
+            cover: song.attributes.cover,
+            lyrics: song.attributes.lyrics,
           }
         })
         return songs
